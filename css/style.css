@@ -1,0 +1,287 @@
+@charset "utf-8";
+
+/* scroll smooth */
+html {scroll-behavior: smooth; }
+
+/* container */
+.container {width: 1400px; margin: 0 auto;}
+
+/* loader */
+.loader {width: 100%; height: 100%; top: 0px; left: 0px; position: fixed; display: block; opacity: 1; background-color: #fff; z-index: 999; text-align: center;}
+.loader img {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 9999;}
+.loader p {position: absolute; top: 54%; left: 50%; transform: translate(-50%, -50%); z-index: 9999; font-size: 13px; color: #bbb;}
+
+/* header(nav) */
+header {background: #fff; height: 60px; position: fixed; top: 0; transition: top 0.2s ease-in-out; width: 100%; z-index: 99; text-align: center;}
+header a {margin: 0 40px; font-size: 17px; color: #3f97c7; line-height: 60px;}
+header a:hover {color: #3584af;}
+.nav-up {top: -60px;}
+body {padding-top: 60px;}
+/* bg */
+.header_bg {height: 1000px; background: #fff; background: url(../img/main.jpg); background-position: center top; background-repeat: no-repeat;}
+
+/* contents */
+/* about */
+.about {height: 700px; position: relative;}
+.about img {position: absolute;}
+.about .img1 {bottom: 0;}
+.about .img3 {right: 0; top: 100px; width: 20%;}
+/* scale */
+.scale1 {width: 400px; height: 500px; overflow: hidden; position: absolute; top: 50px; display: inline-block;}
+.scale1 img {width: 100%; height: 100%; transform: scale(1); transition: transform 0.8s ease-in-out;}
+.scale1:hover img {
+    transform: scale(1.1);               /*  default */
+    -webkit-transform: scale(1.1);       /*  크롬 */
+    -moz-transform: scale(1.1);          /* FireFox */
+    -o-transform: scale(1.1);            /* Opera */
+}
+.scale2 {width: 350px; height: 420px; overflow: hidden; position: absolute; right: 50px; top: 200px; display: inline-block;}
+.scale2 img {width: 100%; height: 100%; transform: scale(1); transition: transform 0.8s ease-in-out;}
+.scale2:hover img {
+    transform: scale(1.1);               /*  default */
+    -webkit-transform: scale(1.1);       /*  크롬 */
+    -moz-transform: scale(1.1);          /* FireFox */
+    -o-transform: scale(1.1);            /* Opera */
+}
+.about .text {text-align: center; margin: 0 auto; padding-top: 150px;}
+.about .text h1 {border-bottom: 2px solid #777; display: inline-block; font-size: 40px;}
+.about .text h2 {font-size: 33px; margin-bottom: 70px;}
+.about .text p {font-size: 23px; margin-bottom: 35px; line-height: 1.3;}
+.about .text p:last-of-type {margin-bottom: 0;}
+
+/* product */
+/* input 안보이게 하기 */
+.product [id*="slide"] {display: none;}
+/* 슬라이드 영역 */
+.product .slidewrap {max-width: 1100px; margin: 0 auto; text-align: left; overflow: hidden; position: relative;}
+.product .slidelist {white-space: nowrap; font-size: 0;}
+.product .slidelist li {display: inline-block; vertical-align: middle; width: 100%; transition: all .5s;}
+.product .slidelist li a {display: block; position: relative;}
+.product .slidelist li a img {width: 100%;}
+/* 좌우로 넘기는 LABEL버튼에 대한 스타일 */
+.product .slide-control {position:absolute; top:0; left:0; z-index:10; width:100%; height:100%;}
+.product .slide-control label {position: absolute; z-index: 1; top: 50%; transform: translateY(-50%); padding: 50px; cursor: pointer;}
+.product .slide-control .left {left: 20px; background: url(../img/left.png) center center / 30% no-repeat;}
+.product .slide-control .right {right: 20px; background: url(../img/right.png) center center / 30% no-repeat;}
+.product .slide-control [class*="control"] {display: none;}
+/* text에 대한 스타일 */
+.product .slidelist [class*="text"] {position:absolute; z-index:1; top:50%; left:50%; transform:translate(-50%,-50%); line-height:1.6; text-align:center; background: rgba(255,255,255,0.9); padding: 30px;}
+.product .slidelist [class*="text"] h3 {font-size:36px; color:#3f97c7; transform:translateY(30px); transition:all .5s; padding-bottom: 15px;}
+.product .slidelist [class*="text"] p {font-size:16px; color:#777; opacity:0; transform:translateY(30px); transition:all .5s; padding-bottom: 15px;}
+.product .slidelist [class*="text"] p:last-of-type {padding-bottom: 0;}
+.product .slidelist [class*="text"] p span {font-weight: bold;}
+/* input이 체크되면 변화값이 li까지 전달되는 스타일 */
+.product [id="slide01"]:checked ~ .slidewrap .slidelist li {transform: translateX(0%);}
+.product [id="slide02"]:checked ~ .slidewrap .slidelist li {transform: translateX(-100%);}
+.product [id="slide03"]:checked ~ .slidewrap .slidelist li {transform: translateX(-200%);}
+/* input이 체크되면 변화값이 좌우 슬라이드 버튼을 담고 있는 div까지 전달되는 스타일 */
+.product [id="slide01"]:checked ~ .slidewrap .control01 {display: block;}
+.product [id="slide02"]:checked ~ .slidewrap .control02 {display: block;}
+.product [id="slide03"]:checked ~ .slidewrap .control03 {display: block;}
+/* input에 체크되면 텍스트 효과 */
+.product input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) [class*="text"] h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+.product input[id="slide01"]:checked ~ .slidewrap li:nth-child(1) [class*="text"] p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+.product input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) [class*="text"] h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+.product input[id="slide02"]:checked ~ .slidewrap li:nth-child(2) [class*="text"] p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+.product input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) [class*="text"] h3 {opacity:1;transform:translateY(0);transition-delay:.2s;}
+.product input[id="slide03"]:checked ~ .slidewrap li:nth-child(3) [class*="text"] p {opacity:1;transform:translateY(0);transition-delay:.4s;}
+
+/* best */
+/* text에 대한 스타일 */
+.best {background: url(../img/c_bg.png); background-position: center top; background-repeat: no-repeat; background-size: 90%; text-align: center; font-size: 0;}
+.best .text {color: #3f97c7; padding: 70px 0;}
+.best .text h1 {font-size: 50px; border-bottom: 5px solid #3f97c7; display: inline-block;}
+/* cover와 자식 요소(img, desc)에 대한 스타일 */
+.best [class*="col"] {display: inline-block; text-align: center;}
+.best [class*="col"] .cover {position: absolute; z-index: 1; opacity: 0; width: 400px; height: 408px; background: rgba(155,202,230,0.5);}
+.best [class*="col"] .cover:hover {opacity: 1; transition:all .4s;}
+.best [class*="col"] .cover .desc {position: relative; top:50%; transform:translateY(-50%);}
+.best [class*="col"] .cover .desc h3 {font-weight: bold; font-size: 22px; color: #3f97c7;}
+.best [class*="col"] .cover .desc span {font-size: 16px; padding-right: 10px; color: #3f97c7;}
+.best [class*="col"] .cover .desc span:last-of-type {padding-right: 0;}
+.best [class*="col"] .cover .desc a {color: #fff;  width: 80px; height: 80px; border-radius: 75px; background: #3f97c7; margin-top: 30px; display: block; position: relative; left: 50%; transform: translateX(-50%);}
+.best [class*="col"] .cover .desc a:hover {background: #3584af;}
+.best [class*="col"] .cover .desc a span {position: relative; top: 25%; font-size: 15px; color: #fff;}
+.best [class*="col"] > img {position: relative; width: 400px; padding: 0 15px 15px 0; float: left;}
+.best .col3 img {padding-right: 0;}
+.best .col4 img {padding-bottom: 0;}
+.best .col5 img {padding-bottom: 0;}
+.best .col6 img {padding-right: 0; padding-bottom: 0;}
+
+/* store */
+.store {padding: 20px 0; font-size: 0; text-align: center;}
+.store .text {text-align: center; padding: 15px;}
+.store .text h1 {font-size: 80px;}
+.store .text h1 span {color: #3f97c7;}
+.store .img_box {display: inline-block; border-radius: 10px; border: 1px solid #ddd; padding: 5px; margin-right: 20px; margin-bottom: 20px; background: #fff; position: relative; overflow: hidden;}
+.store .img_box .img_text {font-size: 14px; position: absolute; left: 0; bottom: 0; width: 100%; text-align: left; height: 20px; line-height: 20px; padding: 7px; background: #fff; opacity: 0;}
+.store .img_box:hover .img_text {opacity: 0.9; transition: all 0.3s;}
+
+/* footer */
+footer img {float: right; width: 300px;}
+footer ul {clear: both; background: #c1dceb; color: #3f97c7; font-weight: bold; text-align: center; padding: 25px 0;}
+footer ul li {display: inline-block; font-size: 13px;}
+footer .info {padding-bottom: 0;}
+footer .email {padding-top: 0;}
+
+/* media */
+@media (max-width: 1420px) {
+    .container {width: 100%;} /* 콘테이너 100% */
+}
+
+/* pc 중간 */
+@media (max-width: 1250px) {
+    /* about */
+    .about {height: 620px;}
+    .about .img1 {width: 35%;}
+    .about .scale1 {width: 340px; height: 440px;}
+    .about .scale2 {width: 290px; height: 360px;}
+    .about .text h1 {font-size: 35px;}
+    .about .text h2 {font-size: 30px; margin-bottom: 40px;}
+    .about .text p {font-size: 19px;}
+
+    /* best */
+    .best [class*="col"] img {width: 300px;}
+    .best [class*="col"] .cover {width: 300px; height: 306px;}
+    .best [class*="col"] .cover .desc h3 {font-size: 20px;}
+    .best [class*="col"] .cover .desc span {font-size: 15px;}
+}
+
+/* PC , 테블릿 가로 */
+@media (max-width: 1023px) {
+    /* header */
+    .header_bg {height: 900px; background-size: 200%;}
+
+    /* about */
+    .about {height: 540px;}
+    .about .scale1 {width: 270px; height: 370px;}
+    .about .scale2 {width: 220px; height: 290px;}
+    .about .text {padding-top: 120px;}
+    .about .text h2 {margin-bottom: 30px;}
+    .about .text p {font-size: 18px;}
+
+    /* best */
+    .best {background-size: 110%;}
+    .best .text {padding: 50px 0;}
+    .best [class*="col"] img {width: 250px;}
+    .best [class*="col"] .cover {width: 250px; height: 255px;}
+    .best [class*="col"] .cover .desc h3 {font-size: 16px;}
+    .best [class*="col"] .cover .desc span {font-size: 12px;}
+
+    /* store */
+    .store .text h1 {font-size: 60px;}
+}
+
+/* 태블릿 중간 */
+@media (max-width: 850px) {
+    /* header */
+    .header_bg {height: 800px;}
+
+    /* about */
+    .about {height: 450px;}
+    .about .img1 {width: 30%;}
+    .about .scale1 {width: 230px; height: 300px; }
+    .about .img3 {top: 50px;}
+    .about .scale2 {width: 180px; height: 220px; top: 150px;}
+    .about .text {padding-top: 100px;}
+    .about .text h1 {font-size: 33px;}
+    .about .text h2 {font-size: 28px;}
+    .about .text p {font-size: 16px; margin-bottom: 30px;}
+
+    /* best */
+    .best [class*="col"] img {padding: 0;}
+
+    /* store */
+    .store .img_box a img {width: 130px;}
+    .store .img_box .img_text {font-size: 11px; height: 10px; line-height: 10px;}
+}
+
+/* 테블릿 세로 */
+@media (max-width: 768px) {
+    /* header */
+    .header_bg {height: 700px;}
+
+    /* about */
+    .about {height: 330px;}
+    .about .scale1 {width: 200px; height: 230px; top: 20px;}
+    .about .scale2 {top: 90px; right: 20px;}
+    .about .text {padding-top: 40px;}
+    .about .text h1 {font-size: 28px;}
+    .about .text h2 {font-size: 25px;}
+    .about .text p {font-size: 14px; margin-bottom: 25px;}
+
+    /* product */
+    .product .slidelist [class*="text"] {padding: 20px;}
+    .product .slidelist [class*="text"] h3 {font-size: 30px;}
+    .product .slidelist [class*="text"] p {font-size: 14px;}
+
+    /* best */
+    .best {background-size: 140%;}
+    .best .text {padding: 40px 0;}
+    .best [class*="col"] img {padding-bottom: 10px;}
+
+    /* store */
+    .store .text h1 {font-size: 50px;}
+}
+
+@media (max-width: 640px) {
+   /* header */
+    header a {font-size: 15px; margin: 0 30px;}
+
+    /* about */
+    .about .text h1 {font-size: 25px;}
+    .about .text h2 {font-size: 22px;}
+    .about .text p {font-size: 11px; margin-bottom: 23px;}
+}
+
+/* 모바일 */
+@media (max-width: 590px) {
+    /* header */
+    .header_bg {height: 500px;}
+
+    /* about */
+    .about {height: 300px;}
+    .about .scale1 {width: 160px; height: 200px; top: 20px;}
+    .about .scale2 {width: 140px; height: 170px; right: 10px;}
+    .about .text {padding-top: 50px;}
+    .about .text h1 {font-size: 24px;}
+    .about .text h2 {font-size: 20px; margin-bottom: 20px;}
+    .about .text p {font-size: 11px; margin-bottom: 20px;}
+
+    /* product */
+    .product .slide-control .left {left: 0px;}
+    .product .slide-control .right {right: 0px;}
+    .product .slidelist [class*="text"] {padding: 15px; }
+    .product .slidelist [class*="text"] h3 {font-size: 25px; padding-bottom: 12px;}
+    .product .slidelist [class*="text"] p {font-size: 12px; padding-bottom: 12px;}
+
+    /* best */
+    .best {background-size: 150%;}
+    .best .text h1 {font-size: 40px;}
+
+    /* store */
+    .store {padding: 0;}
+    .store .text h1 {font-size: 40px;}
+
+    /* footer */
+    footer ul.info {padding-top: 5px;}
+    footer ul.email {padding-bottom: 0;}
+    footer ul li {display: block; line-height: 1.3;}
+}
+
+@media (max-width:500px) {
+    /* header */
+    .header_bg {height: 400px;}
+
+    /* about */
+    .about {height: 290px;}
+
+    /* product */
+    .product .slidelist [class*="text"] {padding: 10px;}
+    .product .slidelist [class*="text"] h3 {font-size: 23px; padding-bottom: 10px;}
+    .product .slidelist [class*="text"] p {font-size: 11px; padding-bottom: 10px;}
+
+    /* best */
+    .best .text {padding: 30px 0;}
+    .best [class*="col"] img.last {padding-bottom: 0px;}
+}
